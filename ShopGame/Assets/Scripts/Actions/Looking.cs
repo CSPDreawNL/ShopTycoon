@@ -17,13 +17,15 @@ namespace Game.Actions
                 {
                     camera = item.gameObject;
                     break;
-                }    
+                }
             }
         }
         private void Update()
         {
             Vector2 _Input = manager.controls.Player.Look.ReadValue<Vector2>();
-            camera.transform.rotation *= new Quaternion(_Input.x * Time.deltaTime * manager.lookSpeedModifier, 0, _Input.y * Time.deltaTime * manager.lookSpeedModifier, 0);
+            // left and right are done on the player, up and down on the camera
+            transform.localEulerAngles += new Vector3(0, _Input.x * Time.deltaTime * manager.lookSpeedModifier, 0);
+            camera.transform.localEulerAngles += new Vector3(-_Input.y * Time.deltaTime * manager.lookSpeedModifier, 0, 0);
         }
     }
 }

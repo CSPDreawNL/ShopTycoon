@@ -17,7 +17,7 @@ namespace Game.Actions
         private void Update()
         {
             Vector2 _Input = manager.controls.Player.Move.ReadValue<Vector2>();
-            m_Rigid.position += new Vector3(_Input.x, 0, _Input.y) * Time.deltaTime * manager.moveSpeedModifier;
+             m_Rigid.MovePosition(transform.position + new Vector3(_Input.x, 0, _Input.y) * Time.deltaTime * manager.moveSpeedModifier);
         }
     }
 }
