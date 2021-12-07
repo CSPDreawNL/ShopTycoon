@@ -6,7 +6,7 @@ namespace Game.Actions
 {
     public class Movement : MonoBehaviour
     {
-        Rigidbody m_Rigid;
+        private Rigidbody m_Rigid;
 
         void Start()
         {
@@ -16,7 +16,7 @@ namespace Game.Actions
         void FixedUpdate()
         {
             Vector3 _Input = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-
+            m_Rigid.position += _Input;
             
         }
     }
