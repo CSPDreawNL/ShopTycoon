@@ -1,20 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Game.Actions;
-using UnityEngine.InputSystem;
 
 namespace Game.Management
 {
+    [RequireComponent(typeof(Movement), typeof(PlayerInteraction), typeof(Looking))]
     public class PlayerManager : MonoBehaviour
     {
         [HideInInspector] public Movement movementScript { get; private set; }
         [HideInInspector] public PlayerInteraction interactionScript { get; private set; }
+        [HideInInspector] public Looking lookingScript { get; private set; }
 
         [HideInInspector] public ControlsManager controls { get; private set; }
 
-        [Header("Movement")]
-        public int speedModifier = 1;
+        [Header("Movement Controls")]
+        public float moveSpeedModifier = 1;
+        public float lookSpeedModifier = 1;
 
         [Header("Interaction")]
         [SerializeField] public float raycastDistance = 3;
@@ -22,7 +22,10 @@ namespace Game.Management
         private void Awake()
         {
             controls = new ControlsManager();
+
             movementScript = GetComponent<Movement>();
+            interactionScript = GetComponent<PlayerInteraction>();
+            lookingScript = GetComponent<Looking>();
         }
         private void OnEnable()
         {
