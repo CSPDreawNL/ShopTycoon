@@ -92,9 +92,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8659395630869034369}
+  - component: {fileID: 2344666189195170957}
   - component: {fileID: 8659395630869034398}
   - component: {fileID: 8659395630869034368}
   - component: {fileID: 8659395630869034371}
+  - component: {fileID: 462204399146266452}
   - component: {fileID: 8659395630869034370}
   m_Layer: 0
   m_Name: Player
@@ -118,6 +120,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2344666189195170957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8659395630869034399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 438b9ddfc13cc7e4b81e4662115b1dfe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speedModifier: 1
+  raycastDistance: 3
 --- !u!136 &8659395630869034398
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -144,7 +160,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10fc223738febc14eb11ebed482913fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SpeedModifier: 3
 --- !u!54 &8659395630869034371
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -161,6 +176,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
+--- !u!114 &462204399146266452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8659395630869034399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ff3d30e8bb03814990d21081ff171ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  manager: {fileID: 2344666189195170957}
+  camera: {fileID: 8659395630776833101}
 --- !u!114 &8659395630869034370
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -234,6 +263,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 467b0521-1327-4118-93ff-49deaaacd4f4
     m_ActionName: Player/Interact[/XInputControllerWindows/rightTrigger,/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 90ee1826-dd0c-42e3-bb05-98e6cb6bd835
+    m_ActionName: Player/Debug Interact[/Keyboard/r]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
