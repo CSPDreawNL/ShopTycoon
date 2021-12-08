@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 357294369}
   - component: {fileID: 357294368}
   - component: {fileID: 357294367}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -389,6 +389,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2344666189195170957, guid: d7be5020cff129e4da3956bc3dc27715, type: 3}
+      propertyPath: lookSpeedModifier
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2344666189195170957, guid: d7be5020cff129e4da3956bc3dc27715, type: 3}
+      propertyPath: moveSpeedModifier
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3550067996155872659, guid: d7be5020cff129e4da3956bc3dc27715, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8659395630776833102, guid: d7be5020cff129e4da3956bc3dc27715, type: 3}
+      propertyPath: orthographic
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8659395630776833102, guid: d7be5020cff129e4da3956bc3dc27715, type: 3}
+      propertyPath: m_FOVAxisMode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8659395630869034369, guid: d7be5020cff129e4da3956bc3dc27715, type: 3}
       propertyPath: m_RootOrder
       value: 2
