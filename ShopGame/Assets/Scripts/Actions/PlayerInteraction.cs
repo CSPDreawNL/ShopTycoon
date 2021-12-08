@@ -4,6 +4,7 @@ namespace Game.Actions
 {
     public class PlayerInteraction : MonoBehaviour
     {
+        // has to be serializefield for gizmo's
         [SerializeField] Management.PlayerManager manager;
 
         [SerializeField] GameObject camera;
@@ -42,8 +43,8 @@ namespace Game.Actions
 #if UNITY_EDITOR
         private void OnDrawGizmos()
         {
-            // draw a ray from the camera, forwards
-            Debug.DrawRay(camera.transform.position, transform.TransformDirection(Vector3.forward) * manager.raycastDistance, Color.red);
+            //// draw a ray from the camera, forwards
+            //Debug.DrawRay(camera.transform.position, transform.TransformDirection(Vector3.forward) * manager.raycastDistance, Color.red);
         }
 #endif
     }

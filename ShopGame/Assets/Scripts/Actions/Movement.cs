@@ -12,7 +12,6 @@ namespace Game.Actions
 
         [SerializeField] Transform m_GroundCheck;
         private float m_GroundDistance = 0.4f;
-        [SerializeField] private LayerMask m_GroundMask;
         private bool m_IsGrounded;
 
         void Start()
@@ -23,7 +22,7 @@ namespace Game.Actions
 
         private void FixedUpdate()
         {
-            m_IsGrounded = Physics.CheckSphere(m_GroundCheck.position, m_GroundDistance, m_GroundMask);
+            m_IsGrounded = Physics.CheckSphere(m_GroundCheck.position, m_GroundDistance, manager.groundMask);
 
             if(m_IsGrounded && m_Velocity.y < 0)
             {

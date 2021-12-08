@@ -6,7 +6,7 @@ namespace Game.Actions
     {
         private Management.PlayerManager manager;
 
-        GameObject camera;
+        public GameObject camera { get; private set; }
         private void Start()
         {
             manager = GetComponent<Management.PlayerManager>();

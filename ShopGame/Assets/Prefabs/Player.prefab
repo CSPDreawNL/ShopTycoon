@@ -166,6 +166,11 @@ MonoBehaviour:
   moveSpeedModifier: 1
   lookSpeedModifier: 1
   raycastDistance: 3
+  objectPlacementDistance: 20
+  groundMaskName: Ground
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!143 &3735922526284188528
 CharacterController:
   m_ObjectHideFlags: 0
@@ -197,9 +202,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_GroundCheck: {fileID: 3550067996155872659}
-  m_GroundMask:
-    serializedVersion: 2
-    m_Bits: 8
 --- !u!114 &462204399146266452
 MonoBehaviour:
   m_ObjectHideFlags: 0

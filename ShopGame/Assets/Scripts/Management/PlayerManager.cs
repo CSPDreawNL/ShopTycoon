@@ -4,11 +4,13 @@ using Game.Actions;
 namespace Game.Management
 {
     [RequireComponent(typeof(Movement), typeof(PlayerInteraction), typeof(Looking))]
+    [RequireComponent(typeof(ObjectPlacement))]
     public class PlayerManager : MonoBehaviour
     {
         [HideInInspector] public Movement movementScript { get; private set; }
         [HideInInspector] public PlayerInteraction interactionScript { get; private set; }
         [HideInInspector] public Looking lookingScript { get; private set; }
+        [HideInInspector] public ObjectPlacement placementScript { get; private set; }
 
         [HideInInspector] public ControlsManager controls { get; private set; }
 
@@ -17,7 +19,12 @@ namespace Game.Management
         public float lookSpeedModifier = 1;
 
         [Header("Interaction")]
-        [SerializeField] public float raycastDistance = 3;
+        public float raycastDistance = 3;
+        public float objectPlacementDistance = 20;
+
+        [Header("Layer settings")]
+        [SerializeField] string groundMaskName = "Ground";
+        [HideInInspector] public LayerMask groundMask;
 
         private void Awake()
         {
@@ -26,6 +33,10 @@ namespace Game.Management
             movementScript = GetComponent<Movement>();
             interactionScript = GetComponent<PlayerInteraction>();
             lookingScript = GetComponent<Looking>();
+            placementScript = GetComponent<ObjectPlacement>();
+
+            // set up all the layermasks
+            groundMask = LayerMask.NameToLayer(groundMaskName);
         }
         private void OnEnable()
         {
@@ -36,5 +47,16 @@ namespace Game.Management
         {
             controls.Disable();
         }
+
+        //private void OnDrawGizmos()
+        //{
+        //    // is in here to make prevent issues
+
+        //    // draw a ray from the camera, forwards
+        //    Debug.DrawRay(lookingScript.camera.transform.position, transform.TransformDirection(Vector3.forward) * raycastDistance, Color.red);
+
+        //    // draw a ray for ghosts
+        //    if ()
+        //}
     }
 }
