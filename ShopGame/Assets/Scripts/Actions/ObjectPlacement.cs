@@ -21,6 +21,13 @@ namespace Game.Actions
         public IEnumerator PlaceGhost(GameObject _obj)
         {
             GameObject _ghostObject = Instantiate(_obj);
+            // set the object to be transparent
+            Renderer _ghostRend = _ghostObject.GetComponent<Renderer>();
+            Color _ghostColor = _ghostRend.material.color;
+            _ghostRend.material = SetTransparent(_ghostRend.material);
+            _ghostColor.a = manager.ghostObjectTransparancy;
+            _ghostRend.material.color = _ghostColor;
+
             placeGhost = true;
             while (placeGhost)
             {
@@ -32,6 +39,18 @@ namespace Game.Actions
                 }
                 yield return new WaitForEndOfFrame();
             }
+        }
+
+        Material SetTransparent(Material _mat)
+        {
+            _mat.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.One);
+            _mat.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
+            _mat.SetInt("_ZWrite", 0);
+            _mat.DisableKeyword("_ALPHATEST_ON");
+            _mat.DisableKeyword("_ALPHABLEND_ON");
+            _mat.EnableKeyword("_ALPHAPREMULTIPLY_ON");
+            _mat.renderQueue = 3000;
+            return _mat;
         }
     }
 }

@@ -21,6 +21,7 @@ namespace Game.Management
         [Header("Interaction")]
         public float raycastDistance = 3;
         public float objectPlacementDistance = 20;
+        [Range(0f, 1f)] public float ghostObjectTransparancy = .8f;
 
         [Header("Layer settings")]
         [SerializeField] string groundMaskName = "Ground";

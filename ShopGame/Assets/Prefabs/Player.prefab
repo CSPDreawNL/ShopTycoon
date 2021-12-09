@@ -167,6 +167,7 @@ MonoBehaviour:
   lookSpeedModifier: 1
   raycastDistance: 3
   objectPlacementDistance: 20
+  ghostObjectTransparancy: 0.2
   groundMaskName: Ground
   groundMask:
     serializedVersion: 2
