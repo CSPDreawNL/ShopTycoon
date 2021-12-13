@@ -51,6 +51,14 @@ namespace Game.Actions
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Jump"",
+                    ""type"": ""Button"",
+                    ""id"": ""f9bf44b3-76d3-4536-bb76-a95de79ab80d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -218,6 +226,28 @@ namespace Game.Actions
                     ""action"": ""Debug Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""90fdce5a-e13b-4122-95ba-63bfeba278ef"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""596ef380-894d-4454-94b0-3f8f3684d467"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -291,6 +321,7 @@ namespace Game.Actions
             m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
             m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
             m_Player_DebugInteract = m_Player.FindAction("Debug Interact", throwIfNotFound: true);
+            m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -344,6 +375,7 @@ namespace Game.Actions
         private readonly InputAction m_Player_Look;
         private readonly InputAction m_Player_Interact;
         private readonly InputAction m_Player_DebugInteract;
+        private readonly InputAction m_Player_Jump;
         public struct PlayerActions
         {
             private @ControlsManager m_Wrapper;
@@ -352,6 +384,7 @@ namespace Game.Actions
             public InputAction @Look => m_Wrapper.m_Player_Look;
             public InputAction @Interact => m_Wrapper.m_Player_Interact;
             public InputAction @DebugInteract => m_Wrapper.m_Player_DebugInteract;
+            public InputAction @Jump => m_Wrapper.m_Player_Jump;
             public InputActionMap Get() { return m_Wrapper.m_Player; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -373,6 +406,9 @@ namespace Game.Actions
                     @DebugInteract.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDebugInteract;
                     @DebugInteract.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDebugInteract;
                     @DebugInteract.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDebugInteract;
+                    @Jump.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
+                    @Jump.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
+                    @Jump.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
                 }
                 m_Wrapper.m_PlayerActionsCallbackInterface = instance;
                 if (instance != null)
@@ -389,6 +425,9 @@ namespace Game.Actions
                     @DebugInteract.started += instance.OnDebugInteract;
                     @DebugInteract.performed += instance.OnDebugInteract;
                     @DebugInteract.canceled += instance.OnDebugInteract;
+                    @Jump.started += instance.OnJump;
+                    @Jump.performed += instance.OnJump;
+                    @Jump.canceled += instance.OnJump;
                 }
             }
         }
@@ -444,6 +483,7 @@ namespace Game.Actions
             void OnLook(InputAction.CallbackContext context);
             void OnInteract(InputAction.CallbackContext context);
             void OnDebugInteract(InputAction.CallbackContext context);
+            void OnJump(InputAction.CallbackContext context);
         }
     }
 }

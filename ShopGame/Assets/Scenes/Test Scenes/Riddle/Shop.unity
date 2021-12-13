@@ -409,6 +409,10 @@ PrefabInstance:
       propertyPath: m_FOVAxisMode
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8659395630869034368, guid: d7be5020cff129e4da3956bc3dc27715, type: 3}
+      propertyPath: m_JumpHeight
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 8659395630869034369, guid: d7be5020cff129e4da3956bc3dc27715, type: 3}
       propertyPath: m_RootOrder
       value: 2
